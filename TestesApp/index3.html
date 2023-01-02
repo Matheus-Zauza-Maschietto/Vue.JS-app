@@ -1,0 +1,36 @@
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<div id="app">
+    <button class="box" v-on:click="change()" v-bind:class="{'teste': attr}">btn</button>
+</div>
+
+<script>
+    const {createApp} = Vue
+    createApp({
+        data(){
+            return{
+                attr: false
+            }
+        },
+        methods: {
+            change(){
+                this.attr = !this.attr
+                console.log(this.attr)
+            }
+        }
+    }).mount("#app")
+</script>
+
+<style>
+    .box{
+        width: 100px;
+        height: 100px;
+        background-color: aqua;
+    }
+
+    .teste{
+        width: 200px;
+        height: 200px;
+        background-color: black;
+    }
+</style>

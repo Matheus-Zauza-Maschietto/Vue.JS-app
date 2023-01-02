@@ -1,0 +1,29 @@
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<div id="app">
+    <h1>Primeiro App</h1>
+    <h2 v-once>Usuario: {{ nome }}</h2>
+    <p>{{nome}}</p>
+    <button v-on:click="entrar()">
+        entrar
+    </button>
+</div>
+
+<script>
+    const {createApp} = Vue
+    createApp({
+        data(){
+            return {
+                nome: "Matheus",
+                
+            }
+        },
+        methods: {
+            entrar(){
+                this.nome += "pedro "
+            }
+        
+        }
+
+    }).mount('#app')
+</script>

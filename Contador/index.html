@@ -1,0 +1,27 @@
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<div id="app">
+    <h1>Contador</h1>
+    <h2>{{cont}}</h2>
+    <button v-on:click="sumCont()">Aumentar</button>
+    <button v-on:click="lessCont()">Diminui</button>
+</div>
+
+<script>
+    const {createApp} = Vue
+    createApp({
+        data(){
+            return{
+                cont: 0
+            }
+        },
+        methods: {
+            sumCont(){
+                this.cont++
+            },
+            lessCont(){
+                this.cont--
+            }
+        }
+    }).mount("#app")
+</script>
