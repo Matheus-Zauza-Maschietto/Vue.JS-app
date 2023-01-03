@@ -1,8 +1,10 @@
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
 <div id="app">
-    <button v-on:click="change()" >btn</button>
-    <div v-bind:class="{'teste': attr}" class="box"></div>
+    <h1 v-if="attr">Logado</h1>
+    <h1 v-else>Deslogaco</h1>
+    <h1 v-show="attr">SHOW MOSTRANDO</h1>
+    <button v-on:click="attr = !attr">{{attr ? "Deslogar": "entrar"}}</button>
 </div>
 
 <script>
@@ -22,16 +24,3 @@
     }).mount("#app")
 </script>
 
-<style>
-    .box{
-        width: 100px;
-        height: 100px;
-        background-color: aqua;
-    }
-
-    .teste{
-        width: 200px;
-        height: 200px;
-        background-color: black;
-    }
-</style>
