@@ -1,31 +1,21 @@
 <template>
   <div id="app">
-
-    <h1>Bem vindo ao meu primeiro projeto!</h1>
-    <p>Componente App:  {{nome}}</p>
-
-    <button>Entrar</button>
-    
-    <user-cmp :nome2="nome" @nomeCurso="nome = $event" />
-
+    <h1>Cadastro</h1>
+    <form>
+      <label>Nome </label>
+      <input type="text" v-model="nome">
+    </form>
   </div>
 </template>
 
 <script>
-import UserCmp from './components/Usuario.vue';
 
-  export default{
+export default{
     name: 'App',
-    components:{
-      UserCmp
-    },
-    data(){
+    Data(){
       return{
-        nome:'Sujeito Programador',
-        outraVariavel: ""
+        nome: ""
       }
-    },
-    methods:{
     }
   }
 </script>
