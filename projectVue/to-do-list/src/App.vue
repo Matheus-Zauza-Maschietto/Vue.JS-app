@@ -3,25 +3,32 @@
       <h1>Minhas Tarefas</h1>
       <div class="tasks">
         <newTask @valorTask="taskList.push($event)" />
-        <div>
-          <p v-for="task in taskList" :key="task">{{task}}</p>
-        </div>
-      </div>
-      
+        
+        <ul>
+          <task-item v-for="task in taskList" :key="task" @Concluido="RemoveItem(task)" :task="task"/>
+          <!-- <li v-for="task in taskList" :key="task" @click="RemoveItem(task)">{{task}}</li> -->
+        </ul>
+      </div> 
   </div>
 </template>
 
 <script>
 import newTask from "./components/newTask.vue"
+import taskItem from "./components/taskItem.vue"
 
 export default {
   name: 'App',
   components:{
-    newTask
+    newTask,
+    taskItem
   },
   data(){
     return{
       taskList: []
+    }
+  }, methods:{
+    RemoveItem(task){
+      this.taskList = this.taskList.filter(item => item !== task)
     }
   }
   
