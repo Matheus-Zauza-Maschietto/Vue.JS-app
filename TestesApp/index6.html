@@ -1,0 +1,19 @@
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<div id="app">
+    <ul>
+        <li v-for="(tech, index) in tecnologias">{{tech}} - {{index}}</li>
+    </ul>
+</div>
+
+<script>
+    const {createApp} = Vue
+    createApp({
+        data(){
+            return{
+                tecnologias: ["java", "javaScript", "Php", "Python", "nodeJs"]
+            }
+        }
+    }).mount("#app")
+</script>
+
