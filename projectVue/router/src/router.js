@@ -1,10 +1,7 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import { createWebHistory, createRouter } from "vue-router";
 
-
-
-import HomePage from './pages/Home.vue';
-import ProdutoPage from './pages/produto/Produto.vue';
+import HomeItem from './pages/Home.vue';
+import ProdutoItem from './pages/produto/Produto.vue';
 
 /*
  Regisrando o router na instancia do Vue
@@ -16,20 +13,21 @@ import ProdutoPage from './pages/produto/Produto.vue';
 
 
  */
-
-
-export default new VueRouter({
-    
-    routes: [
+const routes= [
         {
             path: '/',
-            component: HomePage
+            name: "home",
+            component: HomeItem
         },
         {
             path: '/produto',
-            component: ProdutoPage
+            name: "produto",
+            component: ProdutoItem
         }
     ]
-});
+const router = createRouter({
+    history: createWebHistory(),
+    routes: routes
+})
 
-Vue.use(VueRouter);
+export default router
