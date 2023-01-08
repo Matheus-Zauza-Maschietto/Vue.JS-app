@@ -2,6 +2,8 @@ import { createWebHistory, createRouter } from "vue-router";
 
 import HomeItem from './pages/Home.vue';
 import ProdutoItem from './pages/produto/Produto.vue';
+import homeProduto from "./pages/produto/produtoHome.vue";
+import detalheProduto from "./pages/produto/ProdutoDetalhe.vue";
 
 /*
  Regisrando o router na instancia do Vue
@@ -10,8 +12,6 @@ import ProdutoItem from './pages/produto/Produto.vue';
 
  > Hash seusite.com/#/contato
  > History seusite.com/contato
-
-
  */
 const routes= [
         {
@@ -22,7 +22,12 @@ const routes= [
         {
             path: '/produto',
             name: "produto",
-            component: ProdutoItem
+            component: ProdutoItem,
+            props: true,
+            children:[
+                {path: "", component: homeProduto},
+                {path: ":id", component: detalheProduto, props: true}
+            ]
         }
     ]
 const router = createRouter({
