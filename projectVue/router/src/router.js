@@ -1,10 +1,9 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import { createWebHistory, createRouter } from "vue-router";
 
-
-
-import HomePage from './pages/Home.vue';
-import ProdutoPage from './pages/produto/Produto.vue';
+import HomeItem from './pages/Home.vue';
+import ProdutoItem from './pages/produto/Produto.vue';
+import homeProduto from "./pages/produto/produtoHome.vue";
+import detalheProduto from "./pages/produto/ProdutoDetalhe.vue";
 
 /*
  Regisrando o router na instancia do Vue
@@ -13,23 +12,27 @@ import ProdutoPage from './pages/produto/Produto.vue';
 
  > Hash seusite.com/#/contato
  > History seusite.com/contato
-
-
  */
-
-
-export default new VueRouter({
-    
-    routes: [
+const routes= [
         {
             path: '/',
-            component: HomePage
+            name: "home",
+            component: HomeItem
         },
         {
             path: '/produto',
-            component: ProdutoPage
+            name: "produto",
+            component: ProdutoItem,
+            props: true,
+            children:[
+                {path: "", component: homeProduto},
+                {path: ":id", component: detalheProduto, props: true}
+            ]
         }
     ]
-});
+const router = createRouter({
+    history: createWebHistory(),
+    routes: routes
+})
 
-Vue.use(VueRouter);
+export default router
