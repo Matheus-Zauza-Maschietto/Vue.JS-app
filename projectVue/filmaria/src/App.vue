@@ -16,6 +16,12 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+  #app{
+    display: flex;
+    widows: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 </style>
