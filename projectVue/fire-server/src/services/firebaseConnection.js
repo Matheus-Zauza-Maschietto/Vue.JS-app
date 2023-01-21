@@ -1,7 +1,7 @@
-import firebase from "firebase/app"
+import {firebase, getApps} from "firebase/app"
 import 'firebase/firestore'
 
-const firebaseConfig = {
+let firebaseConfig = {
     apiKey: "AIzaSyDKxvkMSaQ1KJ1l1Aqc7jDnODFi4KxJP-o",
     authDomain: "vueapp-c67fe.firebaseapp.com",
     projectId: "vueapp-c67fe",
@@ -12,7 +12,8 @@ const firebaseConfig = {
   };
   
   // Initialize Firebase
-  if(!firebase.getApps.length){
+  if(getApps.length){
       firebase.initializeApp(firebaseConfig);
   }
-export default firebase
+
+export default firebase;

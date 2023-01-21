@@ -1,13 +1,15 @@
 <template>
   <div id="app">
-    <label for="tarefa">Tarefa: <input type="text" name="tarefa" id="tarefa"></label>
-    <label for="autor">Autor: <input type="text" name="autor" id="tarefa"></label>
+    <label for="tarefa">Tarefa: <input type="text" name="tarefa" id="tarefa" v-model="tarefa"></label> <br>
+    <label for="autor">Autor: <input type="text" name="autor" id="tarefa" v-model="autor"></label> <br>
     <button @click="cadastrar">Cadastrar</button>
   </div>
 </template>
 
 <script>
 import firebase from "./services/firebaseConnection.js"
+import 'firebase/firestore'
+
 export default {
   name: "app",
   data(){
@@ -18,7 +20,8 @@ export default {
   },
   methods: {
     async cadastrar(){
-      await firebase.firestore().collection('posts')
+      await firebase
+      .firestore().collection('posts')
       .doc('123')
       .set({
         tarefa: this.tarefa,
