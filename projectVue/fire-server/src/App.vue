@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <h1>FiseBase + Vue.js</h1>
     <label for="tarefa">Tarefa: <input type="text" name="tarefa" id="tarefa" v-model="tarefa"></label> <br>
     <label for="autor">Autor: <input type="text" name="autor" id="tarefa" v-model="autor"></label> <br>
     <button @click="cadastrar">Cadastrar</button>
@@ -7,8 +8,8 @@
 </template>
 
 <script>
-import firebase from "./services/firebaseConnection.js"
-import 'firebase/firestore'
+import db from "./services/firebaseConnection.js"
+db
 
 export default {
   name: "app",
@@ -20,19 +21,7 @@ export default {
   },
   methods: {
     async cadastrar(){
-      await firebase
-      .firestore().collection('posts')
-      .doc('123')
-      .set({
-        tarefa: this.tarefa,
-        autor: this.autor
-      })
-      .then(()=>{
-        console.log("cadastrado")
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+
     }
   }
 }
